@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './redux/redux-store';
-import Form from './components/Form';
-import './App.scss';
+import PayForm from './components/PayForm';
 import Result from './components/Result';
+import './App.scss';
 
 const App: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <Form />
+            <PayForm />
           </div>
         </div>
         <div className="row">
