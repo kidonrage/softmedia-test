@@ -6,32 +6,53 @@ type FormValuesType = {
   payAmount: number
 }
 
+type InputPropsType = {
+  label: string,
+  value: string,
+  meta: object,
+  input: {
+    value: string
+  }
+}
+
 const PayForm: React.FC<InjectedFormProps<FormValuesType>> = ({handleSubmit}) => {
+
+  const renderRadioButton = (props: InputPropsType) => {
+    const {label, input, meta, ...rest} = props;
+
+    return (
+      <div className="form-check">
+        <label className="form-check-label">
+          <input className="form-check-input" type="radio" {...input} {...rest} checked={input.value === rest.value} />
+          {label}
+        </label>
+      </div>
+    )
+  }
+
+  const renderPayInput = (props: InputPropsType) => {
+    return (
+      <div className="form-group">
+        <label>
+          <input type="number" className="form-control" {...props.input} /> 
+          р.
+        </label>
+      </div>
+    )
+  }
   
   return (
     <form onSubmit={handleSubmit}>
 
-      <label>
-        <Field name="payType" component="input" type="radio" value="option1"/>
-        Оклад за месяц
-      </label>
-      
-      <label>
-        <Field name="payType" component="input" type="radio" value="option2"/>
-        МРОТ
-      </label>
+      <Field component={renderRadioButton} name="payType" label="Оклад за месяц" props={{ value: "option1" }} />
 
-      <label>
-        <Field name="payType" component="input" type="radio" value="option3"/>
-        Оплата за день
-      </label>
+      <Field component={renderRadioButton} name="payType" label="МРОТ" props={{ value: "option2" }} />
 
-      <label>
-        <Field name="payType" component="input" type="radio" value="option4"/>
-        Оплата за час
-      </label>
+      <Field component={renderRadioButton} name="payType" label="Оплата за день" props={{ value: "option3" }} />
 
-      <Field name="payAmount" component="input" type="text" />
+      <Field component={renderRadioButton} name="payType" label="Оплата за час" props={{ value: "option4" }} />
+
+      <Field component={renderPayInput} name="payAmount" />
 
     </form>
   )
