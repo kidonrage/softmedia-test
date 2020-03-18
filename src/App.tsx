@@ -11,7 +11,13 @@ const App: React.FC = () => {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <PayForm />
+            <PayForm 
+              initialValues={{
+                payType: 'option1', 
+                payAmount: 0
+              }} 
+              onSubmit={(values) => console.log("Hello", values)}
+            />
           </div>
         </div>
         <div className="row">
