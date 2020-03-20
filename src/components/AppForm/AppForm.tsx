@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getFormValues, FormState} from 'redux-form';
+import {getFormValues} from 'redux-form';
 import PayForm from '../PayForm';
 import Result from '../Result';
 import { IFormData } from '../../interfaces';
@@ -13,6 +13,7 @@ const AppForm: React.SFC<MapStatePropsType> = (props) => {
 
   const initialValues: IFormData = {
     payType: PayType.Monthly,
+    isNDFL: true,
     payAmount: 0
   }
 

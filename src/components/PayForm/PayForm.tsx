@@ -49,7 +49,7 @@ const PayForm: React.FC<InjectedFormProps<IFormData>> = ({handleSubmit}) => {
 
       <Field component={renderRadioButton} name="payType" label="Оплата за час" props={{ value: PayType.PerHour }} />
 
-      <NDFLSwitch />
+      <Field component={NDFLSwitch} name="isNDFL" uncheckedLabel="Указать с НДФЛ" checkedLabel="Без НДФЛ" />
 
       <Field component={renderPayInput} name="payAmount" />
 
