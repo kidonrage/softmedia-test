@@ -1,19 +1,11 @@
 import React from 'react';
-import {Field, reduxForm, InjectedFormProps, WrappedFieldMetaProps} from 'redux-form';
+import {Field, reduxForm, InjectedFormProps} from 'redux-form';
 import {IFormData} from '../../interfaces';
 import { PayType } from '../../enums';
 import NDFLSwitch from './NDFLSwitch/NDFLSwitch';
 import './PayForm.scss';
-
-type InputPropsType = {
-  label: string,
-  value: string,
-  meta: WrappedFieldMetaProps,
-  input: {
-    value: string
-    name: string
-  }
-}
+import { InputPropsType } from '../../types';
+import PayAmountInput from './PayAmountInput/PayAmountInput';
 
 const renderRadioButton: React.FC<InputPropsType> = (props) => {
   const {label, input, meta, ...rest} = props;
@@ -25,17 +17,6 @@ const renderRadioButton: React.FC<InputPropsType> = (props) => {
         <div className="custom-control-button"></div>
         {label}
       </label>
-    </div>
-  )
-}
-
-const renderPayInput: React.FC<InputPropsType> = (props) => {
-  const measure = "в день"
-
-  return (
-    <div className="form-group form-group-inline">
-      <input type="number" id={props.input.name} className="form-control" {...props.input} /> 
-      <label htmlFor={props.input.name}>{`₽ ${measure}`}</label>
     </div>
   )
 }
@@ -58,7 +39,7 @@ const PayForm: React.FC<InjectedFormProps<IFormData>> = ({handleSubmit}) => {
 
         <Field component={NDFLSwitch} name="isNDFL" uncheckedLabel="Указать с НДФЛ" checkedLabel="Без НДФЛ" />
 
-        <Field component={renderPayInput} name="payAmount" />
+        <Field component={PayAmountInput} name="payAmount" />
 
       </div>
 
