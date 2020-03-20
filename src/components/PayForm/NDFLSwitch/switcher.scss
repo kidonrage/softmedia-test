@@ -1,0 +1,74 @@
+$switch-background-color: rgb(233, 232, 228);
+$switch-background-color-checked: rgb(253, 163, 0);
+$switch-circle-color: rgb(255, 255, 255);
+$border-thickness: 1px;
+$switch-width: 35px;
+$switch-height: 20px;
+
+.form-switch {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  input[type="checkbox"] {
+    display: none;
+
+    &~span {
+      width: 100%;
+    }
+
+    &~.form-unchecked-label {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    &:checked {
+      &+ .switch {
+        background: $switch-background-color-checked;
+        border-color: $switch-background-color-checked;
+
+        &::after {
+          left: $switch-width - $switch-height;
+        }
+      }
+
+      &~.form-checked-label {
+        font-weight: 700;
+      }
+      &~.form-unchecked-label {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .switch {
+    width: $switch-width;
+    height: $switch-height;
+    background: $switch-background-color;
+    border: $border-thickness solid $switch-background-color;
+    padding: 0;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    border-radius: 100px;
+    transition: background-color .25s ease, border-color .25s ease;
+    margin: 0 10px;
+    flex: none;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: $border-thickness;
+      bottom: $border-thickness;
+      left: 0;
+      top: 0;
+      height: $switch-height - $border-thickness * 2;
+      width: $switch-height - $border-thickness * 2;
+      border-radius: 10px;
+      background: $switch-circle-color;
+      transition: left .25s ease;
+    }
+  }
+
+}

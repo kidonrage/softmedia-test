@@ -2,6 +2,7 @@ import React from 'react';
 import {Field, reduxForm, InjectedFormProps, WrappedFieldMetaProps} from 'redux-form';
 import {IFormData} from '../../interfaces';
 import { PayType } from '../../enums';
+import NDFLSwitch from './NDFLSwitch/NDFLSwitch';
 
 type InputPropsType = {
   label: string,
@@ -47,6 +48,8 @@ const PayForm: React.FC<InjectedFormProps<IFormData>> = ({handleSubmit}) => {
       <Field component={renderRadioButton} name="payType" label="Оплата за день" props={{ value: PayType.PerDay }} />
 
       <Field component={renderRadioButton} name="payType" label="Оплата за час" props={{ value: PayType.PerHour }} />
+
+      <NDFLSwitch />
 
       <Field component={renderPayInput} name="payAmount" />
 
