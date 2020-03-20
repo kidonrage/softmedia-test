@@ -5,6 +5,9 @@ const rootReducer = combineReducers({
   form: formReducer
 })
 
+type RootReducerType = typeof rootReducer;
+export type AppStateType = ReturnType<RootReducerType>
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 declare global {
