@@ -1,8 +1,9 @@
 import React from 'react';
+import './Result.scss';
 
 const Result: React.FC = () => {
   return (
-    <div>
+    <div className="results-container">
       <ul>
         <li><b>40 000 р.</b> сотрудник будет получать на руки</li>
         <li><b>5977 р.</b> НДФЛ, 13% от оклада</li>

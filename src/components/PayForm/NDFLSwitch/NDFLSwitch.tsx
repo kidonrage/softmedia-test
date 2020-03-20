@@ -1,5 +1,5 @@
 import React from 'react'
-import './switcher.scss'
+import './NDFLSwitch.scss'
 import { WrappedFieldMetaProps } from 'redux-form'
 
 type SwitchPropsType = {
@@ -19,8 +19,8 @@ const NDFLSwitch: React.FC<SwitchPropsType> = ({checkedLabel, uncheckedLabel, me
       <input type="checkbox" id="ndfl-switch" {...rest} checked={value} {...restInput} />
       <label className="switch order-2" htmlFor="ndfl-switch"></label>
 
-      <span className="form-unchecked-label order-1">{checkedLabel}</span>
-      <span className="form-checked-label order-3">{uncheckedLabel}</span>
+      <span className="form-unchecked-label order-1">{uncheckedLabel}</span>
+      <span className="form-checked-label order-3">{checkedLabel}</span>
     </div>
   )
 }

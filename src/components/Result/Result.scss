@@ -1,0 +1,21 @@
+$background: rgb(251, 243, 202);
+
+.results-container {
+  background-color: $background;
+  padding: 25px;
+  margin-top: 15px;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 5px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

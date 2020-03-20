@@ -3,6 +3,7 @@ import {Field, reduxForm, InjectedFormProps, WrappedFieldMetaProps} from 'redux-
 import {IFormData} from '../../interfaces';
 import { PayType } from '../../enums';
 import NDFLSwitch from './NDFLSwitch/NDFLSwitch';
+import './PayForm.scss';
 
 type InputPropsType = {
   label: string,
@@ -10,6 +11,7 @@ type InputPropsType = {
   meta: WrappedFieldMetaProps,
   input: {
     value: string
+    name: string
   }
 }
 
@@ -17,9 +19,10 @@ const renderRadioButton: React.FC<InputPropsType> = (props) => {
   const {label, input, meta, ...rest} = props;
 
   return (
-    <div className="form-check">
-      <label className="form-check-label">
-        <input className="form-check-input" type="radio" {...input} {...rest} checked={input.value === rest.value} />
+    <div className="custom-control custom-radio">
+      <input type="radio" className="custom-control-input" id={rest.value} {...input} {...rest} checked={input.value === rest.value}/>
+      <label className="custom-control-label" htmlFor={rest.value}>
+        <div className="custom-control-button"></div>
         {label}
       </label>
     </div>
@@ -27,12 +30,12 @@ const renderRadioButton: React.FC<InputPropsType> = (props) => {
 }
 
 const renderPayInput: React.FC<InputPropsType> = (props) => {
+  const measure = "в день"
+
   return (
-    <div className="form-group">
-      <label>
-        <input type="number" className="form-control" {...props.input} /> 
-        р.
-      </label>
+    <div className="form-group form-group-inline">
+      <input type="number" id={props.input.name} className="form-control" {...props.input} /> 
+      <label htmlFor={props.input.name}>{`₽ ${measure}`}</label>
     </div>
   )
 }
@@ -41,17 +44,23 @@ const PayForm: React.FC<InjectedFormProps<IFormData>> = ({handleSubmit}) => {
   return (
     <form onSubmit={handleSubmit}>
 
-      <Field component={renderRadioButton} name="payType" label="Оклад за месяц" props={{ value: PayType.Monthly }} />
+      <small className="form-caption form-text">Сумма</small>
 
-      <Field component={renderRadioButton} name="payType" label="МРОТ" props={{ value: PayType.MROT }} />
+      <div className="form-fields">
 
-      <Field component={renderRadioButton} name="payType" label="Оплата за день" props={{ value: PayType.PerDay }} />
+        <Field component={renderRadioButton} name="payType" label="Оклад за месяц" props={{ value: PayType.Monthly }} />
 
-      <Field component={renderRadioButton} name="payType" label="Оплата за час" props={{ value: PayType.PerHour }} />
+        <Field component={renderRadioButton} name="payType" label="МРОТ" props={{ value: PayType.MROT }} />
 
-      <Field component={NDFLSwitch} name="isNDFL" uncheckedLabel="Указать с НДФЛ" checkedLabel="Без НДФЛ" />
+        <Field component={renderRadioButton} name="payType" label="Оплата за день" props={{ value: PayType.PerDay }} />
 
-      <Field component={renderPayInput} name="payAmount" />
+        <Field component={renderRadioButton} name="payType" label="Оплата за час" props={{ value: PayType.PerHour }} />
+
+        <Field component={NDFLSwitch} name="isNDFL" uncheckedLabel="Указать с НДФЛ" checkedLabel="Без НДФЛ" />
+
+        <Field component={renderPayInput} name="payAmount" />
+
+      </div>
 
     </form>
   )

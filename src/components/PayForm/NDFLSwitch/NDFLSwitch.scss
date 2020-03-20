@@ -1,9 +1,10 @@
 $switch-background-color: rgb(233, 232, 228);
 $switch-background-color-checked: rgb(253, 163, 0);
 $switch-circle-color: rgb(255, 255, 255);
-$border-thickness: 1px;
+$border-thickness: 2px;
 $switch-width: 35px;
 $switch-height: 20px;
+$unchecked-color: rgb(184, 184, 184);
 
 .form-switch {
   display: flex;
@@ -14,12 +15,16 @@ $switch-height: 20px;
     display: none;
 
     &~span {
-      width: 100%;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     &~.form-unchecked-label {
-      font-weight: 700;
       text-align: right;
+    }
+
+    &~.form-checked-label {
+      color: $unchecked-color;
     }
 
     &:checked {
@@ -33,10 +38,10 @@ $switch-height: 20px;
       }
 
       &~.form-checked-label {
-        font-weight: 700;
+        color: #000;
       }
       &~.form-unchecked-label {
-        font-weight: 400;
+        color: $unchecked-color;
       }
     }
   }
