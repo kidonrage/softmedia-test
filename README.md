@@ -1,6 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Что ещё можно улучшить
+- Работу со стилями организовать через модули. Для такой задачи это было излишне. + с учетом bootstrap на проекте все делалось бы только сложнее
+- Подключить `react-bootstrap`. Попробовал и отказался от этой идеи, т.к. хоть и в тз указано использование Bootstrap, тут почти все стили по итогу получились кастомными и перезаписывались. С react-bootstrap делать это было сложнее
+
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
