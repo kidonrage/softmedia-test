@@ -1,10 +1,37 @@
 .info-popover {
   $popover-background: rgb(99, 105, 171);
 
-  background: $popover-background;
+  background-color: $popover-background;
   color: #fff;
   max-width: 245px;
   font-weight: 700;
   font-size: 14px;
   padding: 20px 15px;
+  border-radius: 0;
+  border: none;
+  z-index: 1000;
+
+  .popover-body {
+    color: #fff;
+    padding: 0;
+  }
+
+  .arrow {
+    $arrow-size: 15px;
+
+    position: absolute;
+    top: -$arrow-size;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 $arrow-size $arrow-size 1px;
+    border-color: transparent transparent $popover-background transparent;
+  }
+
+  &-trigger {
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
 }

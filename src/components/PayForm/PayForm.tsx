@@ -19,7 +19,15 @@ const PayForm: React.FC<InjectedFormProps<IFormData>> = ({handleSubmit}) => {
 
         <Field component={RadioButton} name="payType" label="Оклад за месяц" props={{ value: PayType.Monthly }} />
 
-        <Field component={RadioButton} name="payType" label="МРОТ" props={{ value: PayType.MROT, info: <InfoPopover /> }} />
+        <Field 
+          component={RadioButton} 
+          name="payType" 
+          label="МРОТ" 
+          props={{ 
+            value: PayType.MROT, 
+            info: <InfoPopover body="МРОТ - минимальный размер оплаты труда. Разный для разных регионов." /> 
+          }} 
+        />
 
         <Field component={RadioButton} name="payType" label="Оплата за день" props={{ value: PayType.PerDay }} />
 

@@ -1,22 +1,82 @@
 import React, {useState} from 'react'
-import Popover from '../Popover'
-import InfoIcon from '../Icons/InfoIcon';
-import CancelIcon from '../Icons/CancelIcon/CancelIcon';
+import InfoIcon from '../Icons/InfoIcon'
+import CancelIcon from '../Icons/CancelIcon/CancelIcon'
+import { Manager, Reference, Popper } from 'react-popper'
 import './InfoPopover.scss'
 
-const InfoPopover: React.FC = () => {
+type InfoPopoverProps = {
+  body: string
+}
+
+const InfoPopover: React.FC<InfoPopoverProps> = ({body}) => {
   const [isFixed, setIsFixed] = useState(false)
+  const [isOpen, setisOpen] = useState(false)
 
   const handleClick = () => {
     setIsFixed(prev => !prev)
+    setisOpen(true)
+  }
+
+  const handleMouseOver = () => {
+    if (isFixed) {
+      return;
+    }
+
+    setisOpen(true)
+  }
+
+  const handleMouseOut = () => {
+    if (isFixed) {
+      return;
+    }
+
+    setisOpen(false)
   }
 
   return (
-    <Popover className="info-popover" body="МРОТ - минимальный размер оплаты труда. Разный для разных регионов." preferPlace="below" isVisible={isFixed}>
-      <div onClick={handleClick}>
-        {isFixed ? <CancelIcon /> : <InfoIcon />}
-      </div>
-    </Popover>
+    <Manager>
+      <Reference>
+        {({ ref }) => (
+          <div 
+            className="info-popover-trigger" 
+            ref={ref} 
+            onClick={handleClick} 
+            onMouseOver={handleMouseOver} 
+            onMouseOut={handleMouseOut}
+          >
+            {isFixed ? <CancelIcon /> : <InfoIcon />}
+          </div>
+        )}
+      </Reference>
+      {isOpen && (
+        <Popper 
+          placement="bottom-start"
+        >
+          {({ ref, style, placement, arrowProps }) => (
+            <div 
+              ref={ref} 
+              style={{
+                ...style, 
+                top: Number(style.top) + 15,
+                left: Number(style.left) + 10,
+              }} 
+              className="info-popover"
+              data-placement={placement}
+            >
+              {body}
+              <div 
+                ref={arrowProps.ref} 
+                className="arrow" 
+                style={{
+                  ...arrowProps.style, 
+                  left: Number(arrowProps.style.left) - 3
+                }} 
+              />
+            </div>
+          )}
+        </Popper>
+      )}
+    </Manager>
   )
 }
 
