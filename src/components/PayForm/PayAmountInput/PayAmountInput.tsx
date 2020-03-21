@@ -22,7 +22,7 @@ const PayAmountInput: React.FC<MapStatePropsType & InputPropsType> = ({payType, 
 
   return (
     <div className="form-group form-group-inline">
-      <input type="number" id={input.name} className="form-control" {...input} /> 
+      <input type="text" id={input.name} maxLength={10} className="form-control" {...input} /> 
       <label htmlFor={input.name}>{`₽ ${measure}`}</label>
     </div>
   )

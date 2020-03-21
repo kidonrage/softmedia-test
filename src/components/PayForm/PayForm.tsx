@@ -6,6 +6,7 @@ import NDFLSwitch from './NDFLSwitch/NDFLSwitch';
 import './PayForm.scss';
 import { InputPropsType } from '../../types';
 import PayAmountInput from './PayAmountInput/PayAmountInput';
+import { normalizeAmount, formatAmount } from '../helpers';
 
 const renderRadioButton: React.FC<InputPropsType> = (props) => {
   const {label, input, meta, ...rest} = props;
@@ -39,7 +40,7 @@ const PayForm: React.FC<InjectedFormProps<IFormData>> = ({handleSubmit}) => {
 
         <Field component={NDFLSwitch} name="isNDFL" uncheckedLabel="Указать с НДФЛ" checkedLabel="Без НДФЛ" />
 
-        <Field component={PayAmountInput} name="payAmount" />
+        <Field component={PayAmountInput} name="payAmount" normalize={normalizeAmount} format={formatAmount} />
 
       </div>
 
