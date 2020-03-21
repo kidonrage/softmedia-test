@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputPropsType } from '../../../types';
+import { InputPropsType } from '../../../types'
 import './RadioButton.scss'
 
 type RadioButtonProps = {
@@ -11,7 +11,14 @@ const RadioButton: React.FC<InputPropsType & RadioButtonProps> = ({label, input,
     <div className="custom-control custom-radio">
       <div className="flex-container">
         <div>
-          <input type="radio" className="custom-control-input" id={rest.value} {...input} {...rest} checked={input.value === rest.value}/>
+          <input 
+            type="radio" 
+            className="custom-control-input" 
+            id={rest.value} 
+            checked={input.value === rest.value}
+            {...input} 
+            {...rest} 
+          />
           <label className="custom-control-label" htmlFor={rest.value}>
             <div className="custom-control-button"></div>
             {label}

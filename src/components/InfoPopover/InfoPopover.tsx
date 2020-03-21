@@ -19,7 +19,7 @@ const InfoPopover: React.FC<InfoPopoverProps> = ({body}) => {
 
   const handleMouseOver = () => {
     if (isFixed) {
-      return;
+      return
     }
 
     setisOpen(true)
@@ -27,7 +27,7 @@ const InfoPopover: React.FC<InfoPopoverProps> = ({body}) => {
 
   const handleMouseOut = () => {
     if (isFixed) {
-      return;
+      return
     }
 
     setisOpen(false)

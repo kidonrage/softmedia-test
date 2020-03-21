@@ -1,9 +1,9 @@
-import React from 'react';
-import './Result.scss';
-import { AppStateType } from '../../redux/redux-store';
-import { getFormValues } from 'redux-form';
-import { IFormData } from '../../interfaces';
-import { connect } from 'react-redux';
+import React from 'react'
+import './Result.scss'
+import { AppStateType } from '../../redux/redux-store'
+import { getFormValues } from 'redux-form'
+import { IFormData } from '../../interfaces'
+import { connect } from 'react-redux'
 
 const Result: React.FC<MapStatePropsType> = ({payAmount, isNDFL}) => {
   const NDFLfactor = 0.13

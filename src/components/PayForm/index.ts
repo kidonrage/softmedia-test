@@ -1,3 +1,3 @@
-import PayForm from './PayForm';
+import PayForm from './PayForm'
 
-export default PayForm;
+export default PayForm

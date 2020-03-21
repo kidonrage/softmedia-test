@@ -1,10 +1,10 @@
-import React from 'react';
-import { InputPropsType } from '../../../types';
-import { connect,  } from 'react-redux';
-import { PayType } from '../../../enums';
-import { getFormValues } from 'redux-form';
-import { AppStateType } from '../../../redux/redux-store';
-import { IFormData } from '../../../interfaces';
+import React from 'react'
+import { InputPropsType } from '../../../types'
+import { connect,  } from 'react-redux'
+import { PayType } from '../../../enums'
+import { getFormValues } from 'redux-form'
+import { AppStateType } from '../../../redux/redux-store'
+import { IFormData } from '../../../interfaces'
 
 const PayAmountInput: React.FC<MapStatePropsType & InputPropsType> = ({payType, input, ...props}) => {
   let measure = ""
@@ -17,12 +17,18 @@ const PayAmountInput: React.FC<MapStatePropsType & InputPropsType> = ({payType, 
       measure = "в час"
       break
     default: 
-      break;
+      break
   }
 
   return (
     <div className="form-group form-group-inline">
-      <input type="text" id={input.name} maxLength={10} className="form-control" {...input} /> 
+      <input 
+        type="text" 
+        id={input.name} 
+        maxLength={10} 
+        className="form-control" 
+        {...input} 
+      /> 
       <label htmlFor={input.name}>{`₽ ${measure}`}</label>
     </div>
   )
@@ -41,4 +47,4 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 
 
-export default connect(mapStateToProps)(PayAmountInput);
+export default connect(mapStateToProps)(PayAmountInput)

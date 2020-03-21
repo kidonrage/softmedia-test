@@ -3,8 +3,6 @@ export const formatAmount: (amount: number) => string = (amount: number) => {
     return '0'
   }
 
-  // const onlyNums = amount.replace(/^0+|[^\d]/g, '')
-
   let amountString = amount.toString()
 
   if (amountString.length <= 3) {

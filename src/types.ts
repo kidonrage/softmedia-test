@@ -1,4 +1,4 @@
-import { WrappedFieldArrayProps } from "redux-form";
+import { WrappedFieldArrayProps } from "redux-form"
 
 export type InputPropsType = {
   label: string,

@@ -1,23 +1,21 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {getFormValues} from 'redux-form';
-import PayForm from '../PayForm';
-import Result from '../Result';
-import { IFormData } from '../../interfaces';
-import { PayType } from '../../enums';
-import { AppStateType } from '../../redux/redux-store';
+import React from 'react'
+import {connect} from 'react-redux'
+import {getFormValues} from 'redux-form'
+import PayForm from '../PayForm'
+import Result from '../Result'
+import { IFormData } from '../../interfaces'
+import { PayType } from '../../enums'
+import { AppStateType } from '../../redux/redux-store'
 
-const AppForm: React.SFC<MapStatePropsType> = (props) => {
+const AppCalculator: React.SFC<MapStatePropsType> = (props) => {
 
-  const {formStates} = props;
+  const {formStates} = props
 
   const initialValues: IFormData = {
     payType: PayType.Monthly,
     isNDFL: true,
     payAmount: 0
   }
-
-  console.log(props)
 
   return (
     <div className="container">
@@ -51,4 +49,4 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 
 
-export default connect(mapStateToProps)(AppForm)
+export default connect(mapStateToProps)(AppCalculator)
