@@ -1,0 +1,10 @@
+.info-popover {
+  $popover-background: rgb(99, 105, 171);
+
+  background: $popover-background;
+  color: #fff;
+  max-width: 245px;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 20px 15px;
+}

@@ -4,23 +4,10 @@ import {IFormData} from '../../interfaces';
 import { PayType } from '../../enums';
 import NDFLSwitch from './NDFLSwitch/NDFLSwitch';
 import './PayForm.scss';
-import { InputPropsType } from '../../types';
 import PayAmountInput from './PayAmountInput/PayAmountInput';
 import { normalizeAmount, formatAmount } from '../helpers';
-
-const renderRadioButton: React.FC<InputPropsType> = (props) => {
-  const {label, input, meta, ...rest} = props;
-
-  return (
-    <div className="custom-control custom-radio">
-      <input type="radio" className="custom-control-input" id={rest.value} {...input} {...rest} checked={input.value === rest.value}/>
-      <label className="custom-control-label" htmlFor={rest.value}>
-        <div className="custom-control-button"></div>
-        {label}
-      </label>
-    </div>
-  )
-}
+import InfoPopover from '../InfoPopover';
+import RadioButton from './RadioButton';
 
 const PayForm: React.FC<InjectedFormProps<IFormData>> = ({handleSubmit}) => {
   return (
@@ -30,13 +17,13 @@ const PayForm: React.FC<InjectedFormProps<IFormData>> = ({handleSubmit}) => {
 
       <div className="form-fields">
 
-        <Field component={renderRadioButton} name="payType" label="Оклад за месяц" props={{ value: PayType.Monthly }} />
+        <Field component={RadioButton} name="payType" label="Оклад за месяц" props={{ value: PayType.Monthly }} />
 
-        <Field component={renderRadioButton} name="payType" label="МРОТ" props={{ value: PayType.MROT }} />
+        <Field component={RadioButton} name="payType" label="МРОТ" props={{ value: PayType.MROT, info: <InfoPopover /> }} />
 
-        <Field component={renderRadioButton} name="payType" label="Оплата за день" props={{ value: PayType.PerDay }} />
+        <Field component={RadioButton} name="payType" label="Оплата за день" props={{ value: PayType.PerDay }} />
 
-        <Field component={renderRadioButton} name="payType" label="Оплата за час" props={{ value: PayType.PerHour }} />
+        <Field component={RadioButton} name="payType" label="Оплата за час" props={{ value: PayType.PerHour }} />
 
         <Field component={NDFLSwitch} name="isNDFL" uncheckedLabel="Указать с НДФЛ" checkedLabel="Без НДФЛ" />
 
